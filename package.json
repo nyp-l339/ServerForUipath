@@ -21,6 +21,7 @@
     "express": "~4.16.0",
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.3.4",
     "watson-developer-cloud": "^3.12.0"
   }
