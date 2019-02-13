@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/thisGets', (req, res) => {
-    res.send("tes");
+    res.send("test");
 });
 app.post('/thisPosts', (req, res) => {
    
