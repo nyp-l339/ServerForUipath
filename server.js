@@ -14,8 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/thisGets', (req, res) => {
- console.log("meow");
- res.send("yes");
+ 
 });
 app.post('/thisPosts', (req, res) => {
    
