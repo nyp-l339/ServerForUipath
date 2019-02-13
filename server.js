@@ -67,13 +67,20 @@ app.get('/thisGets', (req, res) => {
     res.send("test");
 });
 app.post('/thisPosts', (req, res) => {
+    console.log("Start here ")
     var temp = new TmpData({
         _id: "hey",
         fileName : "fileName",
         text: "text"
     })
-    temp.save().then((SpecificData)=>{
-        res.send("Saved boii")
+    temp.save().then((SpecificData,err)=>{
+        if(err){
+            console.log(err)
+            res.send(err)
+        }else{
+            res.send("Saved boii")
+        }
+        
     });
    
 });
