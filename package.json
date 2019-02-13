@@ -1,0 +1,27 @@
+{
+  "name": "serverforuipath",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyp-l339/ServerForUipath.git"
+  },
+  "author": "Zepse Wolf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nyp-l339/ServerForUipath/issues"
+  },
+  "homepage": "https://github.com/nyp-l339/ServerForUipath#readme",
+  "dependencies": {
+    "connect-mongo": "^2.0.1",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "http-errors": "~1.6.2",
+    "mongoose": "^5.3.4",
+    "watson-developer-cloud": "^3.12.0"
+  }
+}
