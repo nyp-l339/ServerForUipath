@@ -1,21 +1,19 @@
 const express = require('express');
-const fs = require('fs');
 const port  = process.env.PORT || 3000;
-const auth = JSON.parse(fs.readFileSync('authentication.json', 'utf8'));
 var app = express();
 var session = require('express-session');
 var mongoose =require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb+srv://L33903:${auth.mongoPass}@cluster0-uv7is.mongodb.net/uipath?retryWrites=true`,{useNewUrlParser: true});
+mongoose.connect(`mongodb+srv://L33903:NYPfyp339@cluster0-uv7is.mongodb.net/uipath?retryWrites=true`,{useNewUrlParser: true});
 const MongoStore = require('connect-mongo')(session);
 const {TmpData} = require('./models/tmpData.js');
 const {DocumentSchema} = require('./models/documentSchema.js');
 var DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
 //app.use(express.static(__dirname + '/public'));
 var discovery = new DiscoveryV1({
-    version: auth.version,
-    iam_apikey: auth.iam_apikey, 
-    url: auth.url
+    version: "2018-12-03",
+    iam_apikey: "XY7qAvxjeqpNx0jwkBzm-6PaZEFPwkgv5LNLHpXp-CBl", 
+    url: "https://gateway-syd.watsonplatform.net/discovery/api"
 });
 app.get('/', (req, res) => {
     console.log("meow");
@@ -85,7 +83,7 @@ app.get('/getCategory', (req,res)=>{
         {
             for(var c = 0 ; c< tmpdb.length; c++){
                 
-                discovery.query({ environment_id: auth.environment_id, collection_id: auth.collection_id, filter:`_id:${tmpdb[c]._id}`},function(e,data){
+                discovery.query({ environment_id: "2f772c95-aa43-4065-8882-f479524a8dc1", collection_id: "d71d5468-e4b4-4629-b927-40b39dbb1a90", filter:`_id:${tmpdb[c]._id}`},function(e,data){
                     if (e)
                     console.log(e);
                     else{
@@ -141,8 +139,8 @@ var fileName = req.body.fileName;
 var  buf = Buffer.from(JSON.stringify({text: text}));
 
 
-discovery.addDocument({ environment_id: auth.environment_id, 
-                        collection_id: auth.collection_id, 
+discovery.addDocument({ environment_id: "2f772c95-aa43-4065-8882-f479524a8dc1", 
+                        collection_id: "d71d5468-e4b4-4629-b927-40b39dbb1a90", 
                         file: buf,
                         metadata: undefined,
                         file_content_type: "application/json",
@@ -179,7 +177,7 @@ app.get('/useReport', (req,res)=>{
         console.log("Error od mongodb is : ",e)
         else
         {
-            discovery.query({ environment_id: auth.environment_id, collection_id: auth.collection_id,filter:`_id:${tmpdb[0]._id}`},function(e,data){
+            discovery.query({ environment_id: "2f772c95-aa43-4065-8882-f479524a8dc1", collection_id: "d71d5468-e4b4-4629-b927-40b39dbb1a90",filter:`_id:${tmpdb[0]._id}`},function(e,data){
                 res.send(data)
             })
         }
