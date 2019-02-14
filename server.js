@@ -9,7 +9,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb+srv://L33903:NYPfyp339@cluster0-uv7is.mongodb.net/uipath?retryWrites=true',{useNewUrlParser: true});
 const MongoStore = require('connect-mongo')(session);
 const {TmpData} = require('./models/tmpData.js');
-const {DocumentSchema} = require('../models/documentSchema.js');
+const {DocumentSchema} = require('./models/documentSchema.js');
 //app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
