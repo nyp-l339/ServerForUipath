@@ -23,10 +23,7 @@ app.get("/getTodayData", function(req, res) {
         if (e)
         res.error("Failed to call database");
         else{
-           
-            
-            res.send(json)
-
+            res.send(data)
         }
     });
 });
