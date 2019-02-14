@@ -6,10 +6,7 @@ var app = express();
 var session = require('express-session');
 var mongoose =require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://L33903:NYPfyp339@cluster0-uv7is.mongodb.net/uipath',{useNewUrlParser: true}).then( () => {
-    console.log('Connection to the Atlas Cluster is successful!')
-  })
-  .catch( (err) => console.error(err));
+mongoose.connect('mongodb+srv://L33903:NYPfyp339@cluster0-uv7is.mongodb.net/test?retryWrites=true',{useNewUrlParser: true});
 const MongoStore = require('connect-mongo')(session);
 const {TmpData} = require('./models/tmpData.js');
 //app.use(express.static(__dirname + '/public'));
@@ -69,9 +66,9 @@ app.get('/thisGets', (req, res) => {
 app.post('/thisPosts', (req, res) => {
     console.log("Start here ")
     var temp = new TmpData({
-        _id: "hey",
-        fileName : "fileName",
-        text: "text"
+        _id: "heysssss",
+        fileName : "fileNamessssssssss",
+        text: "textsssssss"
     })
     temp.save().then((SpecificData,err)=>{
         if(err){
