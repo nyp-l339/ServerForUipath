@@ -9,6 +9,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb+srv://L33903:NYPfyp339@cluster0-uv7is.mongodb.net/uipath?retryWrites=true',{useNewUrlParser: true});
 const MongoStore = require('connect-mongo')(session);
 const {TmpData} = require('./models/tmpData.js');
+const {DocumentSchema} = require('../models/documentSchema.js');
 //app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
@@ -23,26 +24,7 @@ app.get("/getTodayData", function(req, res) {
         res.error("Failed to call database");
         else{
            
-            for( var i =0 ; i<data.length;i++){
-                //eg . news/law > law
-                var lastCategory = data[i].category.slice(data[i].category.lastIndexOf("/")+1);
-                if(!uniqueArr.includes(lastCategory)){
-                    json[lastCategory]= [];
-                    json[lastCategory].push({
-                        id: data[i]._id,
-                        title: data[i].fileName,
-				        description : data[i].text
-                    })
-                    uniqueArr.push(lastCategory);
-                }
-                else{
-                    json[lastCategory].push({
-                        id: data[i]._id,
-                        title: data[i].fileName,
-				        description : data[i].text
-                    })
-                }
-            }
+            
             res.send(json)
 
         }
