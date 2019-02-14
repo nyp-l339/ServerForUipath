@@ -6,23 +6,11 @@ var app = express();
 var session = require('express-session');
 var mongoose =require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://L33903:NYPfyp339@cluster0-uv7is.mongodb.net/test?retryWrites=true',{useNewUrlParser: true});
+mongoose.connect('mongodb+srv://L33903:NYPfyp339@cluster0-uv7is.mongodb.net/uipath?retryWrites=true',{useNewUrlParser: true});
 const MongoStore = require('connect-mongo')(session);
 const {TmpData} = require('./models/tmpData.js');
 //app.use(express.static(__dirname + '/public'));
-app.use(session({
-    //name of cookie
-    name:'myname.sid',
-    resave:false,
-    saveUninitialized:false,
-    secret:'secret',
-    cookie:{
-      maxAge:36000000,
-      httpOnly:false,
-      secure:false
-    },
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
-  }));
+
 app.get('/', (req, res) => {
     console.log("meow");
     res.send("Done");
@@ -77,7 +65,6 @@ app.post('/thisPosts', (req, res) => {
         }else{
             res.send("Saved boii")
         }
-        
     });
    
 });
