@@ -26,7 +26,8 @@ app.get("/getTodayData", function(req, res) {
         if (e)
         res.error("Failed to call database");
         else{
-           
+            console.log("data length ",data.length);
+            console.log("data ",data);
             for( var i =0 ; i<data.length;i++){
                 //eg . news/law > law
                 var lastCategory = data[i].category.slice(data[i].category.lastIndexOf("/")+1);
