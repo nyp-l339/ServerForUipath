@@ -135,7 +135,7 @@ app.get('/getCategory', (req,res)=>{
 app.post('/addDiscovery', (req,res)=>{
     //Adding file into datas.json then pushing into watson
     
-    console.log(JSON.stringify(req.body, null, 2));
+    //console.log(JSON.stringify(req.body, null, 2));
     // the meow converter 
 var text = req.body.text.replace(/\?meow\?/g, '"');
 var fileName = req.body.fileName;
