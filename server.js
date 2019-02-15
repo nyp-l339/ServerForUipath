@@ -15,6 +15,7 @@ var discovery = new DiscoveryV1({
     iam_apikey: "XY7qAvxjeqpNx0jwkBzm-6PaZEFPwkgv5LNLHpXp-CBl", 
     url: "https://gateway-syd.watsonplatform.net/discovery/api"
 });
+app.use(bodyparser.json()); 
 app.get('/', (req, res) => {
     console.log("meow");
     res.send("Done");
@@ -24,7 +25,7 @@ app.get("/getTodayData", function(req, res) {
     var uniqueArr=[];
     TmpData.find().then((data ,e)=>{
         if (e)
-        res.error("Failed to call database");
+        res.error("Failed to call databases");
         else{
             console.log("data length ",data.length);
             console.log("data ",data);
