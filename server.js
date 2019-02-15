@@ -15,7 +15,8 @@ var discovery = new DiscoveryV1({
     iam_apikey: "XY7qAvxjeqpNx0jwkBzm-6PaZEFPwkgv5LNLHpXp-CBl", 
     url: "https://gateway-syd.watsonplatform.net/discovery/api"
 });
-app.use(bodyparser.json()); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => {
     console.log("meow");
     res.send("Done");
